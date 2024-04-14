@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3mf7tqs2nclq"]
+[gd_scene load_steps=3 format=3 uid="uid://cgv2ewcdpmkhg"]
 
 [ext_resource type="Texture2D" uid="uid://cxpglqlwhw8v8" path="res://assets/sprites/arta.png" id="1_vr3me"]
 [ext_resource type="Script" path="res://scenes/gameplay/Arta Controller.gd" id="2_ight8"]

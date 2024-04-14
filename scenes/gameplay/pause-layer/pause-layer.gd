@@ -33,6 +33,7 @@ func pause_hide():
 
 
 func _unhandled_input(event):
+	return  # delete me if you need pause
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
 			resume()

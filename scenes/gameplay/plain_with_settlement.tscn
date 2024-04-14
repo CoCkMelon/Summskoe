@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/gameplay/Arta Controller.gd" id="5_0di4b"]
 [ext_resource type="Script" path="res://scenes/gameplay/Enemy spawner.gd" id="5_bak2a"]
 [ext_resource type="Script" path="res://scenes/gameplay/mob manager.gd" id="6_dnguu"]
-[ext_resource type="PackedScene" uid="uid://d3mf7tqs2nclq" path="res://scenes/gameplay/mobs/arta.tscn" id="8_dmp2v"]
+[ext_resource type="PackedScene" uid="uid://cgv2ewcdpmkhg" path="res://scenes/gameplay/mobs/arta.tscn" id="8_dmp2v"]
 
 [node name="PlainWithSettlement" type="Node2D"]
 
@@ -40,6 +40,7 @@ script = ExtResource("4_b2811")
 [node name="Dynamic" type="Node" parent="."]
 
 [node name="Enemy" type="Node" parent="Dynamic"]
+unique_name_in_owner = true
 
 [node name="Arta" type="Sprite2D" parent="Dynamic/Enemy"]
 position = Vector2(3490, -94)
@@ -57,6 +58,7 @@ script = ExtResource("5_0di4b")
 team = 1
 
 [node name="Friendly" type="Node" parent="Dynamic"]
+unique_name_in_owner = true
 
 [node name="Arta" parent="Dynamic/Friendly" instance=ExtResource("8_dmp2v")]
 

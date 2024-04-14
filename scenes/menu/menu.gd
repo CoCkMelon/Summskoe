@@ -22,7 +22,8 @@ func _on_PlayButton_pressed() -> void:
 			"val": 15
 		},
 	}
-	Game.change_scene_to_file("res://scenes/gameplay/plain_with_settlement.tscn", params)
+	#Game.change_scene_to_file("res://scenes/gameplay/plain_with_settlement.tscn", params)
+	Game.change_scene_to_file("res://scenes/gameplay/gameplay.tscn", params)
 
 
 func _on_ExitButton_pressed() -> void:
