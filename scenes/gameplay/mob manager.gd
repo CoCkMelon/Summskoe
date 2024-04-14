@@ -15,6 +15,8 @@ func findNearestEnemyMob(mobPosition: float, teamMobs: Array) -> int:
 	var nearestIndex = -1
 	
 	for i in range(teamMobs.size()):
+		if teamMobs[i] == null:
+			continue
 		if teamMobs[i].destroyed:
 			continue
 		var enemyMobPosition = teamMobs[i].position.x

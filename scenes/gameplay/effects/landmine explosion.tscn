@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://e2u2k0qkxpdt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4vc75"]
+font_size = 411
+
+[node name="Node2D" type="Label"]
+offset_right = 20.0
+offset_bottom = 28.0
+text = "💥"
+label_settings = SubResource("LabelSettings_4vc75")

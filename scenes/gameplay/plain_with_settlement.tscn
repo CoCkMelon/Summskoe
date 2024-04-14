@@ -1,27 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://8182udaq0beo"]
+[gd_scene load_steps=17 format=3 uid="uid://8182udaq0beo"]
 
 [ext_resource type="Texture2D" uid="uid://b6a8pr1iiw3xx" path="res://assets/sprites/kandinsky-BG.png" id="1_01hou"]
 [ext_resource type="Texture2D" uid="uid://c8xbglsu83pb1" path="res://assets/sprites/BG.webp" id="1_suq28"]
 [ext_resource type="Texture2D" uid="uid://c6dppapvq0oy4" path="res://assets/sprites/settlement.jpg" id="2_8gmk1"]
 [ext_resource type="Texture2D" uid="uid://cxpglqlwhw8v8" path="res://assets/sprites/arta.png" id="3_6bvia"]
 [ext_resource type="Script" path="res://scenes/gameplay/Camera2D.gd" id="4_b2811"]
+[ext_resource type="Script" path="res://scenes/gameplay/Settlement.gd" id="4_p43wc"]
 [ext_resource type="Script" path="res://scenes/gameplay/Player.gd" id="4_qoevm"]
 [ext_resource type="Script" path="res://scenes/gameplay/Arta Controller.gd" id="5_0di4b"]
+[ext_resource type="Texture2D" uid="uid://bf42qlnada5v4" path="res://assets/sprites/settlement_destroyed.svg" id="5_8ueh0"]
 [ext_resource type="Script" path="res://scenes/gameplay/Enemy spawner.gd" id="5_bak2a"]
 [ext_resource type="Script" path="res://scenes/gameplay/mob manager.gd" id="6_dnguu"]
 [ext_resource type="PackedScene" uid="uid://cgv2ewcdpmkhg" path="res://scenes/gameplay/mobs/arta.tscn" id="8_dmp2v"]
+[ext_resource type="Texture2D" uid="uid://h12mp0txjdnm" path="res://assets/sprites/landmine.svg" id="11_loop0"]
+[ext_resource type="Script" path="res://scenes/gameplay/Landmine.gd" id="12_aifjq"]
+[ext_resource type="Texture2D" uid="uid://d1jx1e03wa5m0" path="res://assets/sprites/truck.svg" id="13_5tmfs"]
+[ext_resource type="Script" path="res://scenes/gameplay/Truck Controller.gd" id="14_12ux7"]
 
 [node name="PlainWithSettlement" type="Node2D"]
 
 [node name="Stationary" type="Node2D" parent="."]
 
 [node name="Kandinsky-bg" type="Sprite2D" parent="Stationary"]
-visible = false
 position = Vector2(662, 88)
 scale = Vector2(10, 10)
 texture = ExtResource("1_01hou")
 
 [node name="Bg" type="Sprite2D" parent="Stationary"]
+visible = false
 position = Vector2(17, -30)
 scale = Vector2(10, 10)
 texture = ExtResource("1_suq28")
@@ -29,6 +35,8 @@ texture = ExtResource("1_suq28")
 [node name="Settlement" type="Sprite2D" parent="Stationary"]
 position = Vector2(-17, 3)
 texture = ExtResource("2_8gmk1")
+script = ExtResource("4_p43wc")
+destroyedImage = ExtResource("5_8ueh0")
 
 [node name="Player" type="Node2D" parent="."]
 script = ExtResource("4_qoevm")
@@ -51,7 +59,6 @@ team = 1
 
 [node name="Arta2" type="Sprite2D" parent="Dynamic/Enemy"]
 position = Vector2(3490, 630)
-scale = Vector2(4, 4)
 texture = ExtResource("3_6bvia")
 flip_h = true
 script = ExtResource("5_0di4b")
@@ -66,6 +73,16 @@ unique_name_in_owner = true
 position = Vector2(-2106, -94)
 texture = ExtResource("3_6bvia")
 script = ExtResource("5_0di4b")
+
+[node name="Landmine" type="Sprite2D" parent="Dynamic/Friendly"]
+position = Vector2(2417, 551)
+texture = ExtResource("11_loop0")
+script = ExtResource("12_aifjq")
+
+[node name="Truck" type="Sprite2D" parent="Dynamic/Friendly"]
+position = Vector2(1420, -201)
+texture = ExtResource("13_5tmfs")
+script = ExtResource("14_12ux7")
 
 [node name="Enemy spawner right" type="Node2D" parent="."]
 position = Vector2(10315, 0)

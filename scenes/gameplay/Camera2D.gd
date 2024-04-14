@@ -2,7 +2,6 @@ extends Camera2D
 
 @export var minx = -10000
 @export var maxx = 10000
-var sel = 0
 
 
 func _ready():
@@ -21,4 +20,5 @@ func  _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			print("Mouse Click/Unclick at: ", event.position)
-			Mobs.spawn_friendly_mob()
+			Mobs.spawn_friendly_mob(get_local_mouse_position().x+position.x)
+

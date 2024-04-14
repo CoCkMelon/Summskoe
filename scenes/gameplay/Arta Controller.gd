@@ -1,7 +1,7 @@
 extends Sprite2D
 
 # Constants
-var attack_distance = 500.0
+var attack_distance = 5000.0
 @export var penetration_force = 500.0
 var attackCooldown = 1.0  # Cooldown time between attacks in seconds
 var lastAttackTime = 0.0  # Time of the last attack
@@ -15,6 +15,8 @@ var lastAttackTime = 0.0  # Time of the last attack
 @onready var mobManager = $"../../../Enemy manager"
 var destroyed = false
 var attack_
+var damageType = "PENETRATION"  # Example damage type
+var armorType = "LIGHT"
 
 @onready var player = $"../../../Player"
 
@@ -61,19 +63,19 @@ func moveToRallyPoint(mobPosition: float) -> float:
 	return newPosition
 
 # Function to calculate damage based on damage type and armor type
-func calculateDamage(damage: float, damageType: String, armorType: String) -> float:
+func calculateDamage(damage: float, sourceDamageType: String, targetArmorType: String) -> float:
 	# Placeholder logic for damage calculation based on damage type and armor type
 	# You can implement your own logic here based on your game design
-	if damageType == "PENETRATION" and armorType == "LIGHT":
+	if sourceDamageType == "PENETRATION" and targetArmorType == "LIGHT":
 		return damage * 0.5  # Example reduction for light armor against penetration damage
 	else:
 		return damage
 
 
 # Function to receive damage
-func receiveDamage(damage: float, damageType: String, armorType: String) -> void:
+func receiveDamage(damage: float, sourceDamageType: String, targetArmorType: String) -> void:
 	# Calculate final damage based on damage type and armor type
-	var finalDamage = calculateDamage(damage, damageType, armorType)
+	var finalDamage = calculateDamage(damage, sourceDamageType, targetArmorType)
 	
 	# Reduce mob health
 	mobHealth -= finalDamage
@@ -162,8 +164,6 @@ func _process(delta: float):
 							currentActionState = ActionState.IDLE
 						else:
 							# Perform attack and apply damage to enemy mob
-							var damageType = "PENETRATION"  # Example damage type
-							var armorType = "LIGHT"  # Example armor type
 							enemyMob.receiveDamage(penetration_force, damageType, armorType)
 							# Update last attack time
 							lastAttackTime = Time.get_ticks_msec() / 1000.0
